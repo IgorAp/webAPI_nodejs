@@ -20,6 +20,12 @@ router.get('/clientes',(req,res)=>{
         res.json(clientes);
     });
 });
+router.get('/clientes/:id',(req,res)=>{
+    global.db.findOne(req.params.id,(err,cliente)=>{
+        if(err) return console.log(err);
+        else res.json(cliente);
+    });
+});
 
 app.listen(port,()=>{
     console.log('api running');
