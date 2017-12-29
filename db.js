@@ -12,8 +12,11 @@ function findAll(callback){
 function findOne(id,callback){
     global.conn.collection("customers").findOne({_id:new ObjectId(id)},callback);
 }
-
+function insert(cliente,callback){
+    global.conn.collection("customers").insert(cliente,callback);
+}
 module.exports = {
     findAll,
-    findOne
+    findOne,
+    insert
 }

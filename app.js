@@ -26,6 +26,13 @@ router.get('/clientes/:id',(req,res)=>{
         else res.json(cliente);
     });
 });
+router.post('/clientes',(req,res)=>{
+    const cliente = req.body;
+    global.db.insert(cliente,(err,result)=>{
+        if(err) res.status(500).json(err);
+        res.json({message:'Cliente cadastrado com sucesso!'});
+    });
+});
 
 app.listen(port,()=>{
     console.log('api running');
