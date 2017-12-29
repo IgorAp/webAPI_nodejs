@@ -14,6 +14,13 @@ router.get('/',(req,res)=>{
 });
 app.use('/',router);
 
+router.get('/clientes',(req,res)=>{
+    global.db.findAll((err,clientes)=>{
+        if(err) return console.log(err)
+        res.json(clientes);
+    });
+});
+
 app.listen(port,()=>{
     console.log('api running');
 })
